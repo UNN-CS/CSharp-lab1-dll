@@ -40,6 +40,25 @@ extern "C" {
 **Program.cs**
 
 ```csharp
+using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+
+namespace CheckDll
+{
+   class Program
+   {
+      [DllImport(@"путь\TestDll.dll",CallingConvention = CallingConvention.Cdecl)]
+      static extern double Add(double x,double y);
+      static void main(string[] args)
+      {
+         Console.WriteLine(Add(3,2));
+      }
+    }
+}
 ```
 
 
