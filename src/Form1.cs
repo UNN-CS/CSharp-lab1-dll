@@ -14,11 +14,11 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
 
-        [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"D:\бэкап\С#\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern int Prime_li(long number);
-        [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"D:\бэкап\С#\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern int nextPrime(long number);
-        [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(@"D:\бэкап\С#\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern int dai_mne_niy_prime(long n);
         public Form1()
         {
@@ -80,25 +80,31 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.chart1.Series[0].Points.Clear(); // указываем на график и очищаем его
-            ulong left = Convert.ToUInt32(textBox2.Text);
-            ulong right = Convert.ToUInt32(textBox3.Text);
-            ulong p = 0;
-            for (ulong j = 2; j < left; j++)
-            {
-                if (Prime_li((int)j) == 1)
+            try {
+                this.chart1.Series[0].Points.Clear(); // указываем на график и очищаем его
+                ulong left = Convert.ToUInt32(textBox2.Text);
+                ulong right = Convert.ToUInt32(textBox3.Text);
+                ulong p = 0;
+                for (ulong j = 2; j < left; j++)
                 {
-                    p++;
+                    if (Prime_li((int)j) == 1)
+                    {
+                        p++;
+                    }
+                }
+                for (ulong i = left; i < right; i++)
+                {
+                    if (Prime_li((int)i) == 1)
+                    {
+                        p++;
+                    }
+
+                    this.chart1.Series[0].Points.AddXY(i, p); //рисуем
                 }
             }
-            for (ulong i = left; i < right; i++)
+            catch
             {
-                if (Prime_li((int)i) == 1)
-                {
-                    p++;
-                }
-
-                this.chart1.Series[0].Points.AddXY(i, p); //рисуем
+                MessageBox.Show("ОООШИБКА! не задал координаты для графика");
             }
         }
     }
