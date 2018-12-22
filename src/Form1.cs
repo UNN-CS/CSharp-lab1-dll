@@ -13,10 +13,6 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern double Add(double x, double y);
-        [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
-        static extern void zapolny_massiv(int[] arr, int n);
 
         [DllImport(@"F:\TestDll\Debug\TestDll.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern int Prime_li(long number);
