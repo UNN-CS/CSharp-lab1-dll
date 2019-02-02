@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+/// <summary>
+/// /
+/// </summary>
 namespace CheckDll
 {
     public partial class Form1 : Form
